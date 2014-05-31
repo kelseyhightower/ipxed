@@ -1,0 +1,25 @@
+<h1>{{.Title}}</h1>
+<form action="/machines/delete/{{.Data.Name}}">
+  <button>Delete</button>
+</form>
+<form action="/machines/update/">
+  <p>Name</p>
+  <input type="text" name="name" value="{{.Data.Name}}" />
+  <p>Mac Address</p>
+  <input type="text" name="macaddress" value="{{.Data.MacAddress}}"/>
+  <p>UUID</p>
+  <input type="text" name="uuid" />
+  <p>Serial</p>
+  <input type="text" name="serial" />
+  <p>Profile</p>
+  <select name="profiles">
+    <option value="production">production</option>
+    <option value="test">test</option>
+  </select>
+  <p>Cloud Config</p>
+  <select name="configs">
+    <option value="production">production</option>
+    <option value="test">test</option>
+  </select>
+  <button>Update</button>
+</form>

@@ -1,0 +1,26 @@
+body {
+  width: 960px;
+  margin: 0 auto;
+}
+
+#content {
+  overflow: auto;
+}
+
+aside#sidebar {
+  margin-top: 10px;
+  height: 100%;
+  position: fixed;
+  width: 160px;
+  padding-top: 35px;
+  overflow-y: auto;
+}
+
+div#main {
+  float: left;
+  width: 500px;
+  margin: 10px;
+  padding: 35px 0 25px 200px;
+}
+
+

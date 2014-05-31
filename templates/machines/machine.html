@@ -1,0 +1,25 @@
+<h1>{{.Data.Name}}</h1>
+<form action="/machines/delete/{{.Data.Name}}">
+  <button>Delete</button>
+</form>
+<form action="/machines/edit/{{.Data.Name}}">
+  <button>Edit</button>
+</form>
+<table>
+  <tr>
+    <td>Name:</td>
+    <td>{{.Data.Name}}</td>
+  </tr>
+  <tr>
+    <td>Mac Address:</td>
+    <td>{{.Data.MacAddress}}</td>
+  </tr>
+  <tr>
+    <td>UUID:</td>
+    <td>{{.Data.UUID}}</td>
+  </tr>
+  <tr>
+    <td>Serial:</td>
+    <td>{{.Data.Serial}}</td>
+  </tr>
+</table>

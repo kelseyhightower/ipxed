@@ -1,0 +1,20 @@
+<h1>Machines</h1>
+<form action="/machines/create/">
+  <button>Create</button>
+</form>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Mac Address</th>
+    <th>UUID</th>
+    <th>Serial</th>
+  </tr>
+  {{range $machine := .Data}}
+  <tr>
+    <td><a href="/machines/{{$machine.Name}}">{{$machine.Name}}</a></td>
+    <td>{{$machine.MacAddress}}</td>
+    <td>{{$machine.UUID}}</td>
+    <td>{{$machine.Serial}}</td>
+  </tr>
+  {{end}}
+</table>

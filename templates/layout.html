@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+    <title>{{.Title}}</title>
+  </head>
+  <body>
+  <div id="content">
+    {{template "sideBar"}}
+    <div id="main">
+      {{template "main" .}}
+    </div>
+  </div>
+  </body>
+</html>

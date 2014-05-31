@@ -1,0 +1,23 @@
+<h1>Create a New Machine</h1>
+
+<form action="/machines/save/" method="POST">
+  <p>Name</p>
+  <input type="text" name="name" />
+  <p>Mac Address</p>
+  <input type="text" name="macaddress" />
+  <p>UUID</p>
+  <input type="text" name="uuid" />
+  <p>Serial</p>
+  <input type="text" name="serial" />
+  <p>Profile</p>
+  <select name="profiles">
+    <option value="production">production</option>
+    <option value="test">test</option>
+  </select>
+  <p>Cloud Config</p>
+  <select name="configs">
+    <option value="production">production</option>
+    <option value="test">test</option>
+  </select>
+  <button>Create</button>
+</form>
