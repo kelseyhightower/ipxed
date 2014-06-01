@@ -1,23 +1,25 @@
 <h1>Create a New Machine</h1>
-
-<form action="/machines/save/" method="POST">
-  <p>Name</p>
-  <input type="text" name="name" />
-  <p>Mac Address</p>
-  <input type="text" name="macaddress" />
-  <p>UUID</p>
-  <input type="text" name="uuid" />
-  <p>Serial</p>
-  <input type="text" name="serial" />
-  <p>Profile</p>
-  <select name="profiles">
-    <option value="production">production</option>
-    <option value="test">test</option>
-  </select>
-  <p>Cloud Config</p>
-  <select name="configs">
-    <option value="production">production</option>
-    <option value="test">test</option>
-  </select>
-  <button>Create</button>
+<form id="create-new-machine" action="/machines/save/" method="POST">
+  <fieldset>
+    <legend>Machine Details</legend>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" />
+    <label for="macaddress">Mac Address</label>
+    <input type="text" id="macaddress" name="macaddress" />
+    <label for="uuid">UUID</label>
+    <input type="text" name="uuid" />
+    <label for="serial">Serial</label>
+    <input type="text" id="serial" name="serial" />
+    <label for="profile">Profile</label>
+    <select name="profiles">
+      <option value="production">production</option>
+      <option value="test">test</option>
+    </select>
+    <label for="configs">Cloud Config</label>
+    <select name="configs">
+      <option value="production">production</option>
+      <option value="test">test</option>
+    </select>
+    <input class="submit-space" type="submit" name="create" value="Create" />
+  </fieldset>
 </form>

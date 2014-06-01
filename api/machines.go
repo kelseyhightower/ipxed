@@ -1,35 +1,40 @@
 package api
 
 import (
-	"log"
 	"encoding/json"
-	"io"
-	"io/ioutil"
+	"log"
 	"net/http"
-)
 
-func unmarshal(r io.Reader, v interface{}) error {
-	data, err := ioutil.ReadAll(r)
-	if err != nil {
-		return err
-	}
-	err = json.Unmarshal(data, v)
-	if err != nil {
-		return err
-	}
-	return nil
-}
+	"github.com/gorilla/mux"
+	"github.com/kelseyhightower/httputils"
+)
 
 func CreateMachineHandler(w http.ResponseWriter, r *http.Request) {
 	var m Machine
-	err := unmarshal(r.Body, &m)
+	err := httputils.UnmarshalJSONBody(r.Body, &m)
 	if err != nil {
-		http.Error(w, err.Error(), 500)
+		httputils.JSONError(w, err.Error(), 500)
 	}
 	err = m.Save()
 	if err != nil {
-		http.Error(w, err.Error(), 500)
+		httputils.JSONError(w, err.Error(), 500)
 	}
+	httputils.SetLocationHeader(w, "http://localhost:8080/machines/"+m.Name)
+	w.WriteHeader(http.StatusCreated)
+}
+
+func GetMachineHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	m, err := GetMachineByName(vars["name"])
+	if err == ErrMachineNotFound {
+		http.NotFound(w, r)
+		return
+	}
+	if err != nil {
+		httputils.JSONError(w, err.Error(), 500)
+		return
+	}
+	httputils.JSONWrite(w, m, 200)
 }
 
 type Response struct {
@@ -51,3 +56,6 @@ func ListMachinesHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Write(data)
 }
+
+func UpdateMachineHandler(w http.ResponseWriter, r *http.Request) {}
+func DeleteMachineHandler(w http.ResponseWriter, r *http.Request) {}

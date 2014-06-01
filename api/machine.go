@@ -2,17 +2,19 @@ package api
 
 import (
 	"encoding/json"
+	"errors"
 
 	"github.com/boltdb/bolt"
 )
 
+var (
+	ErrMachineNotFound = errors.New("machine not found")
+)
+
 type Machine struct {
-	Config     string
-	Name       string
-	MacAddress string
-	Profile    string
-	Serial     string
-	UUID       string
+	Name       string `json:"name"`
+	MacAddress string `json:"macaddress"`
+	Profile    string `json:"profile"`
 }
 
 func (m Machine) Save() error {
@@ -65,6 +67,9 @@ func GetMachineByName(name string) (Machine, error) {
 	})
 	if err != nil {
 		return m, err
+	}
+	if len(data) == 0 {
+		return m, ErrMachineNotFound
 	}
 	err = json.Unmarshal(data, &m)
 	if err != nil {

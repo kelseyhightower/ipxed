@@ -3,8 +3,45 @@ body {
   margin: 0 auto;
 }
 
+.submit-space {
+  margin-top: 30px;
+}
+
+fieldset {
+  padding: 20px;
+  border: 1px solid #dcdcdc;
+}
+
+legend {
+  padding: 10px 10px;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+select {
+  display: block;
+  margin-bottom: 10px;
+}
+
+td, th {
+  padding: 5px;
+}
+
+table.listing {
+  border-spacing: 5px;
+}
+
 #content {
   overflow: auto;
+}
+
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 aside#sidebar {
@@ -22,5 +59,3 @@ div#main {
   margin: 10px;
   padding: 35px 0 25px 200px;
 }
-
-
