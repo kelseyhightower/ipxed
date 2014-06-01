@@ -1,4 +1,4 @@
-package main
+package web
 
 import (
 	"log"
@@ -7,17 +7,12 @@ import (
 	"github.com/gorilla/mux"
 )
 
-type Page struct {
-	Title string
-	Data  interface{}
-}
-
 func SaveMachineHandler(w http.ResponseWriter, r *http.Request) {
 	m := Machine{}
 	m.Name = r.PostFormValue("name")
 	m.MacAddress = r.PostFormValue("macaddress")
 	m.Save()
-	http.Redirect(w, r, "/machines/"+m.Name, http.StatusMovedPermanently)	
+	http.Redirect(w, r, "/machines/"+m.Name, http.StatusMovedPermanently)
 }
 
 func CreateMachineHandler(w http.ResponseWriter, r *http.Request) {
