@@ -11,8 +11,15 @@ func SaveMachineHandler(w http.ResponseWriter, r *http.Request) {
 	m := Machine{}
 	m.Name = r.PostFormValue("name")
 	m.MacAddress = r.PostFormValue("macaddress")
+	m.Profile = r.PostFormValue("profile")
 	m.Save()
 	http.Redirect(w, r, "/machines/"+m.Name, http.StatusMovedPermanently)
+}
+
+func DeleteMachineHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	DeleteMachineByName(vars["name"])
+	http.Redirect(w, r, "/machines/", http.StatusMovedPermanently)
 }
 
 func CreateMachineHandler(w http.ResponseWriter, r *http.Request) {
@@ -45,7 +52,7 @@ func ShowMachineHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	p := &Page{
 		Data:  m,
-		Title: "Machine View",
+		Title: m.Name,
 	}
 	renderTemplate(w, "templates/machines/machine.html", p)
 }

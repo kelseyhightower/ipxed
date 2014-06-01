@@ -7,8 +7,7 @@
     <tr>
       <th>Name</th>
       <th>Mac Address</th>
-      <th>UUID</th>
-      <th>Serial</th>
+      <th>Profile</th>
     </tr>
   </thead>
   <tbody>
@@ -16,8 +15,7 @@
     <tr>
       <td><a href="/machines/{{$machine.Name}}">{{$machine.Name}}</a></td>
       <td>{{$machine.MacAddress}}</td>
-      <td>{{$machine.UUID}}</td>
-      <td>{{$machine.Serial}}</td>
+      <td><a href="/profiles/{{$machine.Profile}}">{{$machine.Profile}}</a></td>
     </tr>
     {{end}}
   </tbody>

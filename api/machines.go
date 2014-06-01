@@ -1,7 +1,6 @@
 package api
 
 import (
-	"encoding/json"
 	"log"
 	"net/http"
 
@@ -11,12 +10,10 @@ import (
 
 func CreateMachineHandler(w http.ResponseWriter, r *http.Request) {
 	var m Machine
-	err := httputils.UnmarshalJSONBody(r.Body, &m)
-	if err != nil {
+	if err := httputils.UnmarshalJSONBody(r.Body, &m); err != nil {
 		httputils.JSONError(w, err.Error(), 500)
 	}
-	err = m.Save()
-	if err != nil {
+	if err := m.Save(); err != nil {
 		httputils.JSONError(w, err.Error(), 500)
 	}
 	httputils.SetLocationHeader(w, "http://localhost:8080/machines/"+m.Name)
@@ -26,7 +23,7 @@ func CreateMachineHandler(w http.ResponseWriter, r *http.Request) {
 func GetMachineHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	m, err := GetMachineByName(vars["name"])
-	if err == ErrMachineNotFound {
+	if err == ErrNotFound {
 		http.NotFound(w, r)
 		return
 	}
@@ -49,13 +46,17 @@ func ListMachinesHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), 500)
 	}
 	response.Machines = machines
-	data, err := json.MarshalIndent(&response, "", "  ")
-	if err != nil {
-		log.Println(err.Error())
-		http.Error(w, err.Error(), 500)
-	}
-	w.Write(data)
+	httputils.JSONWrite(w, response, 200)
 }
 
 func UpdateMachineHandler(w http.ResponseWriter, r *http.Request) {}
-func DeleteMachineHandler(w http.ResponseWriter, r *http.Request) {}
+
+func DeleteMachineHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	err := DeleteMachineByName(vars["name"])
+	if err != nil {
+		httputils.JSONError(w, err.Error(), 500)
+		return
+	}
+	w.WriteHeader(http.StatusNoContent)
+}
