@@ -1,9 +1,8 @@
 package main
 
 import (
-	"net/http"
 	"log"
-	
+	"net/http"
 
 	"github.com/kelseyhightower/ipxed/api"
 	"github.com/kelseyhightower/ipxed/web"
