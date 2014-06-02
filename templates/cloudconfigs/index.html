@@ -1,0 +1,16 @@
+<h1>Cloud Configs</h1>
+<a href="/cloudconfigs/new">Create</a>
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{range $cloudconfig := .Data}}
+    <tr>
+      <td><a href="/cloudconfigs/{{$cloudconfig.Name}}">{{$cloudconfig.Name}}</a></td>
+    </tr>
+    {{end}}
+  </tbody>
+</table>

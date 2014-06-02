@@ -1,0 +1,14 @@
+<h1>Add a New Cloud Config</h1>
+<form id="create-cloudconfig" action="/cloudconfigs/create" method="POST">
+  <fieldset>
+    <legend>Cloud Config Details</legend>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" />
+
+	<label for="config">Config</label>
+    <textarea id="config" name="config" wrap="soft" rows="10" cols="50"></textarea>
+
+	<input class="submit-space" type="submit" name="create" value="Create" />
+  </fieldset>
+</form>
