@@ -8,15 +8,16 @@ import (
 
 func Handler() http.Handler {
 	r := mux.NewRouter()
-	// Static assets
+	// Static assets.
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
-	// machines endpoint
-	r.HandleFunc("/", ListMachinesHandler).Methods("GET")
-	r.HandleFunc("/machines/", ListMachinesHandler).Methods("GET")
+	r.HandleFunc("/", IndexMachineHandler).Methods("GET")
+
+	// Machine endpoint.
+	r.HandleFunc("/machines", IndexMachineHandler).Methods("GET")
+	r.HandleFunc("/machines/create", CreateMachineHandler).Methods("POST")
+	r.HandleFunc("/machines/new", NewMachineHandler).Methods("GET")
 	r.HandleFunc("/machines/{name}", ShowMachineHandler).Methods("GET")
-	r.HandleFunc("/machines/create/", CreateMachineHandler).Methods("GET")
-	r.HandleFunc("/machines/delete/{name}", DeleteMachineHandler).Methods("POST")
-	r.HandleFunc("/machines/edit/{name}", EditMachineHandler).Methods("POST")
-	r.HandleFunc("/machines/save/", SaveMachineHandler).Methods("POST")
+	r.HandleFunc("/machines/{name}/edit", EditMachineHandler).Methods("GET")
+	r.HandleFunc("/machines/{name}/delete", DeleteMachineHandler).Methods("GET")
 	return r
 }

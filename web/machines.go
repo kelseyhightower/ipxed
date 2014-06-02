@@ -7,7 +7,8 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func SaveMachineHandler(w http.ResponseWriter, r *http.Request) {
+// CreateMachineHandler creates a new machine.
+func CreateMachineHandler(w http.ResponseWriter, r *http.Request) {
 	m := Machine{}
 	m.Name = r.PostFormValue("name")
 	m.MacAddress = r.PostFormValue("macaddress")
@@ -16,19 +17,14 @@ func SaveMachineHandler(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/machines/"+m.Name, http.StatusMovedPermanently)
 }
 
+// DeleteMachineHandler deletes a specific machine.
 func DeleteMachineHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	DeleteMachineByName(vars["name"])
-	http.Redirect(w, r, "/machines/", http.StatusMovedPermanently)
+	http.Redirect(w, r, "/machines", http.StatusMovedPermanently)
 }
 
-func CreateMachineHandler(w http.ResponseWriter, r *http.Request) {
-	p := &Page{
-		Title: "Create Machine",
-	}
-	renderTemplate(w, "templates/machines/create.html", p)
-}
-
+// EditMachineHandler displays an HTML form for editing a machine.
 func EditMachineHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	name := vars["name"]
@@ -43,6 +39,26 @@ func EditMachineHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "templates/machines/edit.html", p)
 }
 
+// IndexMachineHandler displays a list of all machines.
+func IndexMachineHandler(w http.ResponseWriter, r *http.Request) {
+	machines, err := GetMachines()
+	if err != nil {
+		log.Println(err.Error())
+	}
+	p := &Page{
+		Data:  machines,
+		Title: "Machines",
+	}
+	renderTemplate(w, "templates/machines/index.html", p)
+}
+
+// NewMachineHandler displays an HTML form for creating a machine.
+func NewMachineHandler(w http.ResponseWriter, r *http.Request) {
+	p := &Page{ Title: "Create Machine"}
+	renderTemplate(w, "templates/machines/create.html", p)
+}
+
+// ShowMachineHandler displays a specific machine.
 func ShowMachineHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	name := vars["name"]
@@ -54,17 +70,5 @@ func ShowMachineHandler(w http.ResponseWriter, r *http.Request) {
 		Data:  m,
 		Title: m.Name,
 	}
-	renderTemplate(w, "templates/machines/machine.html", p)
-}
-
-func ListMachinesHandler(w http.ResponseWriter, r *http.Request) {
-	machines, err := GetMachines()
-	if err != nil {
-		log.Println(err.Error())
-	}
-	p := &Page{
-		Data:  machines,
-		Title: "Machines",
-	}
-	renderTemplate(w, "templates/machines/list.html", p)
+	renderTemplate(w, "templates/machines/show.html", p)
 }

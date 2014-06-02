@@ -1,10 +1,6 @@
 <h1>{{.Data.Name}}</h1>
-<form action="/machines/delete/{{.Data.Name}}" method="POST">
-  <button>Delete</button>
-</form>
-<form action="/machines/edit/{{.Data.Name}}" method="POST">
-  <button>Edit</button>
-</form>
+<a href="/machines/{{.Data.Name}}/delete">Delete</a>
+<a href="/machines/{{.Data.Name}}/edit">Edit</a>
 <table>
   <tr>
     <td>Name:</td>
