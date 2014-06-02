@@ -1,0 +1,17 @@
+<h1>{{.Data.Name}}</h1>
+<a href="/profiles/{{.Data.Name}}/delete">Delete</a>
+<a href="/profiles/{{.Data.Name}}/edit">Edit</a>
+<table>
+  <tr>
+    <td>Name:</td>
+    <td>{{.Data.Name}}</td>
+  </tr>
+  <tr>
+    <td>Cloud Config:</td>
+    <td>{{.Data.CloudConfig}}</td>
+  </tr>
+  <tr>
+    <td>Console:</td>
+    <td>{{.Data.Console}}</td>
+  </tr>
+</table>

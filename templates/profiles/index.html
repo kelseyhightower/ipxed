@@ -1,0 +1,20 @@
+<h1>Profiles</h1>
+<a href="/profiles/new">Create</a>
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>CloudConfig</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{range $profile := .Data}}
+    <tr>
+      <td><a href="/profiles/{{$profile.Name}}">{{$profile.Name}}</a></td>
+      <td>{{$profile.CloudConfig}}</td>
+      <td><a href="/images/{{$profile.Version}}">{{$profile.Version}}</a></td>
+    </tr>
+    {{end}}
+  </tbody>
+</table>

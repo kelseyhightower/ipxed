@@ -1,0 +1,60 @@
+<h1>Create a New Profile</h1>
+<form id="create-profile" action="/profiles/create" method="POST">
+  <fieldset>
+    <legend>Profile Details</legend>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" />
+
+    <label for="release">Release Channel</label>
+    <select name="release">
+      <option value="beta">Beta</option>
+      <option value="alpha">Alpha</option>
+    </select>
+
+    <label for="sshkey">SSH Public Key</label>
+    <select name="sshkey">
+      <option value=""></option>
+      <option value="id_rsa.pub">id_rsa.pub</option>
+      <option value="insecure.pub">insecure.pub</option>
+    </select>
+
+    <label for="cloud_config">Cloud Config</label>
+    <select name="cloud_config">
+      <option value=""></option>
+      <option value="cloud-config.yml">cloud-config.yml</option>
+    </select>
+
+	<label for="rootfstype">Root Filesystem Type</label>
+    <select name="rootfstype">
+      <option value="tmpfs">tmpfs</option>
+      <option value="btrfs">btrfs</option>
+    </select>
+	<label for="root">Root</label>
+    <input type="text" id="root" name="root" />
+	
+    <fieldset>
+      <legend>Console</legend>
+      <label for="tty0">tty0</label>
+      <input type="checkbox" checked name="console" id="tty0" value="tty0" />
+      <label for="tty1">tty1</label>
+      <input type="checkbox" name="console" id="tty1" value="tty1" />
+	  <label for="tty2">tty2</label>
+      <input type="checkbox" name="console" id="tty2" value="tty2" />
+      <label for="ttyS0">ttyS0</label>
+      <input type="checkbox" name="console" id="ttyS0" value="ttyS0" />
+    </fieldset>
+
+    <fieldset>
+      <legend>Autologin</legend>
+      <label for="tty1">tty1</label>
+      <input type="checkbox" name="autologin" id="tty1" value="tty1" />
+      <label for="tty2">tty2</label>
+      <input type="checkbox" name="autologin" id="tty2" value="tty2" />
+      <label for="ttyS0">ttyS0</label>
+      <input type="checkbox" name="autologin" id="ttyS0" value="ttyS0" />
+    </fieldset>
+
+	<input class="submit-space" type="submit" name="create" value="Create" />
+  </fieldset>
+</form>

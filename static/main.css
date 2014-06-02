@@ -8,8 +8,9 @@ body {
 }
 
 fieldset {
-  padding: 20px;
+  padding: 0px 20px;
   border: 1px solid #dcdcdc;
+  margin-bottom: 10px;
 }
 
 legend {
@@ -19,6 +20,10 @@ legend {
 input {
   display: block;
   margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+  display: inline;
 }
 
 select {

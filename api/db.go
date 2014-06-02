@@ -25,6 +25,10 @@ func init() {
 		if err != nil {
 			log.Fatal(err.Error())
 		}
+		_, err = tx.CreateBucketIfNotExists([]byte("profiles"))
+		if err != nil {
+			log.Fatal(err.Error())
+		}
 		return nil
 	})
 	if err != nil {
