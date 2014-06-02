@@ -8,8 +8,8 @@ type Profile struct {
 	Console         string `json:"console"`
 	CoreosAutologin string `json:"coreos_autologin"`
 	RootFstype      string `json:"rootfstype"`
-	Root			string `json:"root"`
-	SSHKey			string `json:"sshkey"`
+	Root            string `json:"root"`
+	SSHKey          string `json:"sshkey"`
 	Version         string `json:"version"`
 }
 

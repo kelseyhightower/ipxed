@@ -1,0 +1,18 @@
+<h1>SSH Keys</h1>
+<a href="/sshkeys/new">Create</a>
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Fingerprint</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{range $sshkey := .Data}}
+    <tr>
+      <td><a href="/sshkeys/{{$sshkey.Name}}">{{$sshkey.Name}}</a></td>
+      <td>{{$sshkey.Fingerprint}}</td>
+    </tr>
+    {{end}}
+  </tbody>
+</table>

@@ -21,5 +21,12 @@ func Handler() http.Handler {
 	r.HandleFunc("/api/profiles/{name}", GetProfileHandler).Methods("GET")
 	r.HandleFunc("/api/profiles/{name}", DeleteProfileHandler).Methods("DELETE")
 
+	// sshkeys
+	r.HandleFunc("/api/sshkeys", ListSSHKeyHandler).Methods("GET")
+	r.HandleFunc("/api/sshkeys", CreateSSHKeyHandler).Methods("POST")
+	r.HandleFunc("/api/sshkeys/{name}", GetSSHKeyHandler).Methods("GET")
+	r.HandleFunc("/api/sshkeys/{name}", DeleteSSHKeyHandler).Methods("DELETE")
+
+
 	return r
 }

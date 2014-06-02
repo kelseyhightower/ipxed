@@ -1,0 +1,14 @@
+<h1>Edit SSH Public Key: {{.Data.Name}}</h1>
+<form id="create-sshkey" action="/sshkeys/create" method="POST">
+  <fieldset>
+    <legend>SSH Key Details</legend>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" value="{{.Data.Name}}" />
+
+	<label for="sshkey">SSH Key</label>
+    <textarea id="sshkey" name="sshkey" wrap="soft" rows="10" cols="50">{{.Data.Key}}</textarea>
+
+	<input class="submit-space" type="submit" name="create" value="Create" />
+  </fieldset>
+</form>

@@ -28,5 +28,13 @@ func Handler() http.Handler {
 	r.HandleFunc("/profiles/{name}/edit", EditProfileHandler).Methods("GET")
 	r.HandleFunc("/profiles/{name}/delete", DeleteProfileHandler).Methods("GET")
 
+	// sshkeys
+	r.HandleFunc("/sshkeys", IndexSSHKeyHandler).Methods("GET")
+	r.HandleFunc("/sshkeys/create", CreateSSHKeyHandler).Methods("POST")
+	r.HandleFunc("/sshkeys/new", NewSSHKeyHandler).Methods("GET")
+	r.HandleFunc("/sshkeys/{name}", ShowSSHKeyHandler).Methods("GET")
+	r.HandleFunc("/sshkeys/{name}/edit", EditSSHKeyHandler).Methods("GET")
+	r.HandleFunc("/sshkeys/{name}/delete", DeleteSSHKeyHandler).Methods("GET")
+
 	return r
 }

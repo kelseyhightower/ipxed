@@ -21,13 +21,17 @@ func init() {
 		log.Fatal(err.Error())
 	}
 	err = db.Update(func(tx *bolt.Tx) error {
-		_, err := tx.CreateBucketIfNotExists([]byte("machines"))
-		if err != nil {
-			log.Fatal(err.Error())
+		buckets := []string{
+			"machines",
+			"profiles",
+			"sshkeys",
+			"configs",
 		}
-		_, err = tx.CreateBucketIfNotExists([]byte("profiles"))
-		if err != nil {
-			log.Fatal(err.Error())
+		for _, b := range buckets {
+			_, err := tx.CreateBucketIfNotExists([]byte(b))
+			if err != nil {
+				log.Fatal(err.Error())
+			}
 		}
 		return nil
 	})
