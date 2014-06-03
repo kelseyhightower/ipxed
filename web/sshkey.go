@@ -14,9 +14,9 @@ var (
 )
 
 type SSHKey struct {
-    Name            string `json:"name"`
-    Fingerprint     string `json:"fingerprint"`
-    Key             string `json:"key"`
+	Name        string `json:"name"`
+	Fingerprint string `json:"fingerprint"`
+	Key         string `json:"key"`
 }
 
 func (s SSHKey) Save() error {

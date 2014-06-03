@@ -25,7 +25,7 @@ func init() {
 			"machines",
 			"profiles",
 			"sshkeys",
-			"configs",
+			"cloudconfigs",
 		}
 		for _, b := range buckets {
 			_, err := tx.CreateBucketIfNotExists([]byte(b))

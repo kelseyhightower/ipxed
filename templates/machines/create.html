@@ -1,4 +1,4 @@
-<h1>Create a New Machine</h1>
+<h1>{{.Title}}</h1>
 <form id="create-machine" action="/machines/create" method="POST">
   <fieldset>
     <legend>Machine Details</legend>
@@ -8,8 +8,10 @@
     <input type="text" id="macaddress" name="macaddress" />
     <label for="profile">Profile</label>
     <select name="profile">
-      <option value="production">production</option>
-      <option value="test">test</option>
+      <option value=""></option>
+      {{range $profile := .Data.Profiles}}
+      <option value="{{$profile.Name}}">{{$profile.Name}}</option>
+      {{end}}
     </select>
     <input class="submit-space" type="submit" name="create" value="Create" />
   </fieldset>

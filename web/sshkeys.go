@@ -53,7 +53,7 @@ func IndexSSHKeyHandler(w http.ResponseWriter, r *http.Request) {
 
 // NewSSHKeyHandler displays an HTML form for creating a sshkey.
 func NewSSHKeyHandler(w http.ResponseWriter, r *http.Request) {
-	p := &Page{ Title: "Add SSH Key"}
+	p := &Page{Title: "Add SSH Key"}
 	renderTemplate(w, "templates/sshkeys/create.html", p)
 }
 

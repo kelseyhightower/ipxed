@@ -14,14 +14,14 @@ var (
 )
 
 type Profile struct {
-    Name            string `json:"name"`
-    CloudConfig     string `json:"cloud_config"`
-    Console         string `json:"console"`
-    CoreosAutologin string `json:"coreos_autologin"`
-    RootFstype      string `json:"rootfstype"`
-    Root            string `json:"root"`
-    SSHKey          string `json:"sshkey"`
-    Version         string `json:"version"`
+	Name            string `json:"name"`
+	CloudConfig     string `json:"cloud_config"`
+	Console         string `json:"console"`
+	CoreosAutologin string `json:"coreos_autologin"`
+	RootFstype      string `json:"rootfstype"`
+	Root            string `json:"root"`
+	SSHKey          string `json:"sshkey"`
+	Version         string `json:"version"`
 }
 
 func (p Profile) Save() error {

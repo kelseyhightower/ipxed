@@ -27,6 +27,11 @@ func Handler() http.Handler {
 	r.HandleFunc("/api/sshkeys/{name}", GetSSHKeyHandler).Methods("GET")
 	r.HandleFunc("/api/sshkeys/{name}", DeleteSSHKeyHandler).Methods("DELETE")
 
+	// cloudconfigs
+	r.HandleFunc("/api/cloudconfigs", ListCloudConfigHandler).Methods("GET")
+	r.HandleFunc("/api/cloudconfigs", CreateCloudConfigHandler).Methods("POST")
+	r.HandleFunc("/api/cloudconfigs/{name}", GetCloudConfigHandler).Methods("GET")
+	r.HandleFunc("/api/cloudconfigs/{name}", DeleteCloudConfigHandler).Methods("DELETE")
 
 	return r
 }

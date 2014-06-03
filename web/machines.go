@@ -1,6 +1,7 @@
 package web
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -27,14 +28,13 @@ func DeleteMachineHandler(w http.ResponseWriter, r *http.Request) {
 // EditMachineHandler displays an HTML form for editing a machine.
 func EditMachineHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	name := vars["name"]
-	m, err := GetMachineByName(name)
+	m, err := GetMachineByName(vars["name"])
 	if err != nil {
 		log.Println(err.Error())
 	}
 	p := &Page{
 		Data:  m,
-		Title: "Edit " + name,
+		Title: fmt.Sprintf("Machine - %s", m.Name),
 	}
 	renderTemplate(w, "templates/machines/edit.html", p)
 }
@@ -54,21 +54,32 @@ func IndexMachineHandler(w http.ResponseWriter, r *http.Request) {
 
 // NewMachineHandler displays an HTML form for creating a machine.
 func NewMachineHandler(w http.ResponseWriter, r *http.Request) {
-	p := &Page{ Title: "Create Machine"}
+	profiles, err := GetProfiles()
+	if err != nil {
+		log.Println(err.Error())
+	}
+	data := struct {
+		Profiles []Profile
+	}{
+		Profiles: profiles,
+	}
+	p := &Page{
+		Data:  data,
+		Title: "Create a Machine",
+	}
 	renderTemplate(w, "templates/machines/create.html", p)
 }
 
 // ShowMachineHandler displays a specific machine.
 func ShowMachineHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	name := vars["name"]
-	m, err := GetMachineByName(name)
+	m, err := GetMachineByName(vars["name"])
 	if err != nil {
 		log.Println(err.Error())
 	}
 	p := &Page{
 		Data:  m,
-		Title: m.Name,
+		Title: fmt.Sprintf("Machines - %s", m.Name),
 	}
 	renderTemplate(w, "templates/machines/show.html", p)
 }

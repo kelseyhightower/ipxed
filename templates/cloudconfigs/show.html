@@ -1,4 +1,4 @@
-<h1>{{.Data.Name}}</h1>
+<h1>{{.Title}}</h1>
 <a href="/cloudconfigs/{{.Data.Name}}/delete">Delete</a>
 <a href="/cloudconfigs/{{.Data.Name}}/edit">Edit</a>
 <table>
@@ -8,6 +8,6 @@
   </tr>
   <tr>
     <td>Config:</td>
-    <td><textarea id="config" name="config" wrap="soft" rows="10" cols="50" readonly>{{.Data.Config}}</textarea></td>
+    <td><textarea id="config" name="config" wrap="soft" rows="20" cols="50" readonly>{{.Data.Config}}</textarea></td>
   </tr>
 </table>

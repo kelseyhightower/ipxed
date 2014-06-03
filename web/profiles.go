@@ -1,6 +1,7 @@
 package web
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -9,17 +10,18 @@ import (
 
 // CreateProfileHandler creates a new profile.
 func CreateProfileHandler(w http.ResponseWriter, r *http.Request) {
-	p := Profile{}
-	p.Name = r.PostFormValue("name")
-	p.CloudConfig = r.PostFormValue("cloud_config")
-	p.Console = r.PostFormValue("console")
-	p.CoreosAutologin = r.PostFormValue("coreos_autologin")
-	p.RootFstype = r.PostFormValue("rootfstype")
-	p.Root = r.PostFormValue("root")
-	p.SSHKey = r.PostFormValue("sshkey")
-	p.Version = r.PostFormValue("version")
-	p.Save()
-	http.Redirect(w, r, "/profiles/"+p.Name, http.StatusMovedPermanently)
+	profile := Profile{
+		Name:            r.PostFormValue("name"),
+		CloudConfig:     r.PostFormValue("cloud_config"),
+		Console:         r.PostFormValue("console"),
+		CoreosAutologin: r.PostFormValue("coreos_autologin"),
+		RootFstype:      r.PostFormValue("rootfstype"),
+		Root:            r.PostFormValue("root"),
+		SSHKey:          r.PostFormValue("sshkey"),
+		Version:         r.PostFormValue("version"),
+	}
+	profile.Save()
+	http.Redirect(w, r, "/profiles/"+profile.Name, http.StatusMovedPermanently)
 }
 
 // DeleteProfileHandler deletes a specific profile.
@@ -32,16 +34,15 @@ func DeleteProfileHandler(w http.ResponseWriter, r *http.Request) {
 // EditProfileHandler displays an HTML form for editing a profile.
 func EditProfileHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	name := vars["name"]
-	pf, err := GetProfileByName(name)
+	profile, err := GetProfileByName(vars["name"])
 	if err != nil {
 		log.Println(err.Error())
 	}
-	p := &Page{
-		Data:  pf,
-		Title: "Edit " + name,
+	page := &Page{
+		Data:  profile,
+		Title: fmt.Sprintf("Profiles - %s", profile.Name),
 	}
-	renderTemplate(w, "templates/profiles/edit.html", p)
+	renderTemplate(w, "templates/profiles/edit.html", page)
 }
 
 // IndexProfileHandler displays a list of all profiles.
@@ -50,30 +51,31 @@ func IndexProfileHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println(err.Error())
 	}
-	p := &Page{
+	page := &Page{
 		Data:  profiles,
 		Title: "Profiles",
 	}
-	renderTemplate(w, "templates/profiles/index.html", p)
+	renderTemplate(w, "templates/profiles/index.html", page)
 }
 
 // NewProfileHandler displays an HTML form for creating a profile.
 func NewProfileHandler(w http.ResponseWriter, r *http.Request) {
-	p := &Page{ Title: "Create Profile"}
-	renderTemplate(w, "templates/profiles/create.html", p)
+	page := &Page{
+		Title: "Create a Profile",
+	}
+	renderTemplate(w, "templates/profiles/create.html", page)
 }
 
 // ShowProfileHandler displays a specific profile.
 func ShowProfileHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	name := vars["name"]
-	pf, err := GetProfileByName(name)
+	profile, err := GetProfileByName(vars["name"])
 	if err != nil {
 		log.Println(err.Error())
 	}
-	p := &Page{
-		Data:  pf,
-		Title: pf.Name,
+	page := &Page{
+		Data:  profile,
+		Title: fmt.Sprintf("Profiles - %s", profile.Name),
 	}
-	renderTemplate(w, "templates/profiles/show.html", p)
+	renderTemplate(w, "templates/profiles/show.html", page)
 }
