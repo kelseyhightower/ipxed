@@ -16,7 +16,7 @@ var (
 
 func init() {
 	var err error
-	db, err = bolt.Open("/tmp/ipxeweb.bolt", 0644)
+	db, err = bolt.Open("/tmp/ipxeweb.bolt", 0644, nil)
 	if err != nil {
 		log.Fatal(err.Error())
 	}

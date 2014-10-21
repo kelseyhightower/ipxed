@@ -19,6 +19,7 @@ func CreateProfileHandler(w http.ResponseWriter, r *http.Request) {
 		Root:            r.PostFormValue("root"),
 		SSHKey:          r.PostFormValue("sshkey"),
 		Version:         r.PostFormValue("version"),
+		MacAddress:      r.PostFormValue("macaddress"),
 	}
 	profile.Save()
 	http.Redirect(w, r, "/profiles/"+profile.Name, http.StatusMovedPermanently)

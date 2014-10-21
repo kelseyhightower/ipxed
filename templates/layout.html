@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="/static/main.css">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.2.0+2/paper/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/app.css">
     <title>{{.Title}}</title>
-  </head>
-  <body>
-  <div id="content">
-    {{template "sideBar"}}
-    <div id="main">
-      {{template "main" .}}
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <a class="navbar-brand" href="#">iPXEd</a>
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="/machines">Machines</a>
+            </li>
+            <li>
+                <a href="/profiles">Profiles</a>
+            </li>
+            <li>
+                <a href="/cloudconfigs">Cloud Configs</a>
+            </li>
+            <li>
+                <a href="/sshkeys">SSH Keys</a>
+            </li>
+        </ul>
+    </nav>
+    <img src="/static/coreos-wordmark-vert-color.png" />
+    <div class="content">
+        {{template "main" .}}
     </div>
-  </div>
-  </body>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/app.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
 </html>

@@ -22,6 +22,7 @@ type Profile struct {
 	Root            string `json:"root"`
 	SSHKey          string `json:"sshkey"`
 	Version         string `json:"version"`
+	MacAddress      string `json:"macaddress"`
 }
 
 func (p Profile) Save() error {

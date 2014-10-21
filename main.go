@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -13,7 +14,9 @@ func main() {
 	webHandler := web.Handler()
 	http.Handle("/api/", apiHandler)
 	http.Handle("/", webHandler)
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	port := "0.0.0.0:8080"
+	fmt.Println("Listening on port", port)
+	if err := http.ListenAndServe(port, nil); err != nil {
 		log.Fatal(err)
 	}
 }

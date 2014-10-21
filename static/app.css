@@ -1,0 +1,34 @@
+body {
+    padding-top: 70px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.panel {
+    max-width: 600px;
+    margin-right: auto;
+}
+.create-machines {
+    max-width: 400px;
+}
+.cloud-configs {
+    max-width: 400px;
+}
+.table {
+    max-width: 600px;
+    margin-right: auto;
+    margin-top: 10px;
+}
+.list-group {
+    max-width: 100px;
+    text-align: center;
+    margin-right: auto;
+}
+textarea {
+    max-width: 500px;
+    min-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.input-group {
+    margin-right: auto;
+}
