@@ -7,12 +7,12 @@
         <form role="form" action="/machines/create" method="POST">
             <div class="input-group">
                 <span class="input-group-addon">Name</span>
-                <input type="text" class="form-control" name="name" value="{{.Data.Name}}">
+                <input type="text" class="form-control" name="name" value="{{.Data.Name}}" required>
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">Mac Address</span>
-                <input type="text" class="form-control" name="mac address" value="{{.Data.MacAddress}}">
+                <input type="text" class="form-control" name="mac address" value="{{.Data.MacAddress}}" required>
             </div>
             <br>
             <select class="btn btn-default dropdown-toggle">

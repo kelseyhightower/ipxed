@@ -7,12 +7,12 @@
         <form action="/sshkeys/create" method="POST">
             <div class="input-group">
                 <span class="input-group-addon">Name</span>
-                <input type="text" name="name">
+                <input type="text" name="name" required>
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">SSHKey</span>
-                <textarea id="sshkey" name="sshkey" rows="10"></textarea>
+                <textarea id="sshkey" name="sshkey" rows="10" required></textarea>
             </div>
             <br>
             <input class="btn btn-primary" type="submit" name="create" value="Create">

@@ -7,12 +7,12 @@
         <form role="form" action="/cloudconfigs/create" method="POST">
             <div class="input-group">
                 <span class="input-group-addon">Name</span>
-                <input type="text" class="form-control" name="name">
+                <input type="text" class="form-control" name="name" required>
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">Config</span>
-                <textarea class="form-control" rows="10" name="config"></textarea>
+                <textarea class="form-control" rows="10" name="config" required></textarea>
             </div>
             <br>
             <button class="btn btn-primary" type="submit" name="create" value="Create">Submit</button>

@@ -7,12 +7,12 @@
         <form role="form" action="/cloudconfigs/create" method="POST">
             <div class="input-group">
                 <span class="input-group-addon">Name</span>
-                <input type="text" class="form-control" name="name" value="{{.Data.Name}}">
+                <input type="text" class="form-control" name="name" value="{{.Data.Name}}" required>
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">Config</span>
-                <textarea class="form-control" rows="10" name="config">{{.Data.Config}}</textarea>
+                <textarea class="form-control" rows="10" name="config" required>{{.Data.Config}}</textarea>
             </div>
             <br>
             <button class="btn btn-primary" type="submit" name="create" value="Create">Submit</button>
