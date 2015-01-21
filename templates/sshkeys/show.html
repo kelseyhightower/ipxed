@@ -1,17 +1,28 @@
-<h1>{{.Title}}</h1>
-<a href="/sshkeys/{{.Data.Name}}/delete">Delete</a>
-<a href="/sshkeys/{{.Data.Name}}/edit">Edit</a>
-<table>
-  <tr>
-    <td>Name:</td>
-    <td>{{.Data.Name}}</td>
-  </tr>
-  <tr>
-    <td>Fingerprint:</td>
-    <td>{{.Data.Fingerprint}}</td>
-  </tr>
-  <tr>
-    <td>Key:</td>
-    <td><textarea id="sshkey" name="sshkey" wrap="soft" rows="10" cols="50" readonly>{{.Data.Key}}</textarea></td>
-  </tr>
-</table>
+<br>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{.Title}}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="list-group">
+            <a class="list-group-item" href="/sshkeys/{{.Data.Name}}/delete"><i class="fa fa-ban fa-fw"></i> Delete</a>
+            <a class="list-group-item" href="/sshkeys/{{.Data.Name}}/edit"><i class="fa fa-edit fa-fw"></i> Edit</a>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <td>Name:</td>
+                <td>{{.Data.Name}}</td>
+            </tr>
+            <tr>
+                <td>Fingerprint:</td>
+                <td>{{.Data.Fingerprint}}</td>
+            </tr>
+            <tr>
+                <td>Key:</td>
+                <td>
+                    <textarea name="sshkey" rows="10" readonly>{{.Data.Key}}</textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

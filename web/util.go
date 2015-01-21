@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-var templates = template.Must(template.ParseFiles("templates/layout.html", "templates/sidebar.html"))
+var templates = template.Must(template.ParseFiles("templates/layout.html"))
 
 func renderTemplate(w http.ResponseWriter, path string, p *Page) {
 	clone, err := templates.Clone()

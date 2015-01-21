@@ -1,14 +1,21 @@
-<h1>{{.Title}}</h1>
-<form id="create-sshkey" action="/sshkeys/create" method="POST">
-  <fieldset>
-    <legend>SSH Key Details</legend>
-
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" value="{{.Data.Name}}" />
-
-	<label for="sshkey">SSH Key</label>
-    <textarea id="sshkey" name="sshkey" wrap="soft" rows="10" cols="50">{{.Data.Key}}</textarea>
-
-	<input class="submit-space" type="submit" name="create" value="Create" />
-  </fieldset>
-</form>
+<br>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{.Title}}</h3>
+    </div>
+    <div class="panel-body">
+        <form role="form" action="/sshkeys/create" method="POST">
+            <div class="input-group">
+                <span class="input-group-addon">Name</span>
+                <input type="text" name="name" value="{{.Data.Name}}" required>
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Key</span>
+                <textarea name="sshkey" rows="10" required>{{.Data.Key}}</textarea>
+            </div>
+            <br>
+            <input class="btn btn-primary" type="submit" name="create" value="Create">
+        </form>
+    </div>
+</div>

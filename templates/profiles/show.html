@@ -1,17 +1,26 @@
-<h1>{{.Title}}</h1>
-<a href="/profiles/{{.Data.Name}}/delete">Delete</a>
-<a href="/profiles/{{.Data.Name}}/edit">Edit</a>
-<table>
-  <tr>
-    <td>Name:</td>
-    <td>{{.Data.Name}}</td>
-  </tr>
-  <tr>
-    <td>Cloud Config:</td>
-    <td>{{.Data.CloudConfig}}</td>
-  </tr>
-  <tr>
-    <td>Console:</td>
-    <td>{{.Data.Console}}</td>
-  </tr>
-</table>
+<br>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{.Title}}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="list-group">
+            <a class="list-group-item" href="/profiles/{{.Data.Name}}/delete"><i class="fa fa-ban fa-fw"></i> Delete</a>
+            <a class="list-group-item" href="/profiles/{{.Data.Name}}/edit"><i class="fa fa-edit fa-fw"></i> Edit</a>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <td>Name:</td>
+                <td>{{.Data.Name}}</td>
+            </tr>
+            <tr>
+                <td>Cloud Config:</td>
+                <td>{{.Data.CloudConfig}}</td>
+            </tr>
+            <tr>
+                <td>Console:</td>
+                <td>{{.Data.Console}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,18 +1,28 @@
-<h1>{{.Title}}</h1>
-<form id="create-machine" action="/machines/create" method="POST">
-  <fieldset>
-    <legend>Machine Details</legend>
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" />
-    <label for="macaddress">Mac Address</label>
-    <input type="text" id="macaddress" name="macaddress" />
-    <label for="profile">Profile</label>
-    <select name="profile">
-      <option value=""></option>
-      {{range $profile := .Data.Profiles}}
-      <option value="{{$profile.Name}}">{{$profile.Name}}</option>
-      {{end}}
-    </select>
-    <input class="submit-space" type="submit" name="create" value="Create" />
-  </fieldset>
-</form>
+<br>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{.Title}}</h3>
+    </div>
+    <div class="panel-body">
+        <form role="form" action="/machines/create" method="POST">
+            <div class="input-group">
+                <span class="input-group-addon">Name</span>
+                <input type="text" class="form-control" name="name" required>
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Mac Address</span>
+                <input type="text" class="form-control" name="mac address" required>
+            </div>
+            <br>
+            <select class="btn btn-default dropdown-toggle">
+                {{range $profile := .Data.Profiles}}
+                <option value="{{$profile.Name}}">{{$profile.Name}}</option>
+                {{end}}
+            </select>
+            <br>
+            <br>
+            <button class="btn btn-primary" type="submit" name="create" value="Create">Submit</button>
+        </form>
+    </div>
+</div>
